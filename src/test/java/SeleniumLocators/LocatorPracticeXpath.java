@@ -35,6 +35,11 @@ public class LocatorPracticeXpath {
         driver.close();
         System.out.println("PASSED");
         System.out.println("ssssss");
+        System.out.println("ssssss");
+        System.out.println("ssssss");
+        System.out.println("ssssss");
+        System.out.println("ssssss");
+
 
 
 
