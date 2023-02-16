@@ -78,7 +78,6 @@ THESE PARTS SHOULD BE DONE BY CONTAINS or . XPATH METHOD
         WebElement book = driver.findElement(By.xpath("//button[@id = 'btn-book-appointment']"));
         book.click();
 
-
         //10-Validate the header is "Appointment confirmation" (if statement)
         WebElement appointmentConfValidation = driver.findElement(By.xpath("//h2[contains(text(),'App')]"));
         String header = appointmentConfValidation.getText().trim();
