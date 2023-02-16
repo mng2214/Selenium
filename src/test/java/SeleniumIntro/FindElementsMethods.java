@@ -28,18 +28,14 @@ public class FindElementsMethods {
 //        }
 //
         driver.navigate().to("https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190814/examples/checkbox/checkbox-1/checkbox-1.html");
-        List<WebElement> boxes = driver.findElements(By.xpath("//div[@role = 'checkbox']"));
+        List<WebElement> boxes = driver.findElements(By.xpath("//div[@aria-checked = 'false']"));
 
         for (WebElement box : boxes) {
             Thread.sleep(500);
             WebElement select = driver.findElement(By.xpath("//div[@aria-checked = 'true']"));
-            if(!box.isSelected()){
-                if (box.isDisplayed() && box.isEnabled()){
-                    box.click();
-                }
+            if(!box.isSelected() && box.isDisplayed() && box.isEnabled()){
+                box.click();
             }
-
-
         }
         Thread.sleep(5000);
         driver.quit();
