@@ -20,7 +20,7 @@ public class LocatorPracticeXpath {
         WebElement lastName = driver.findElement(By.xpath("//input[@id = 'input-lastname']"));
         lastName.sendKeys("test2");
         WebElement email = driver.findElement(By.xpath("//input[@id = 'input-email']"));
-        email.sendKeys("testas4esdrjkgrasffd@mail.com");
+        email.sendKeys("testas4esdrjk5grasffd@mail.com");
         WebElement telephone = driver.findElement(By.xpath("//input[@id = 'input-telephone']"));
         telephone.sendKeys("2237737373");
         WebElement agree = driver.findElement(By.xpath("//input[@name = 'agree']"));
@@ -31,14 +31,14 @@ public class LocatorPracticeXpath {
         passwordRepeat.sendKeys("Ar2tart123");
         WebElement submit = driver.findElement(By.xpath("//input[@value = 'Continue']"));
         submit.click();
+
+
+
+
         Thread.sleep(15000);
         driver.close();
         System.out.println("PASSED");
-        System.out.println("ssssss");
-        System.out.println("ssssss");
-        System.out.println("ssssss");
-        System.out.println("ssssss");
-        System.out.println("ssssss");
+
 
 
 
