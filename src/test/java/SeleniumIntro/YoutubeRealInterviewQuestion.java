@@ -32,19 +32,17 @@ public class YoutubeRealInterviewQuestion {
 // 2-Search for justin bieber
         WebElement searchBar = driver.findElement(By.xpath("//input[@id ='search']"));
         searchBar.sendKeys("justin biber");
-       // WebElement clickSearch = driver.findElement(By.xpath("//button[@id='search-icon-legacy']"));
+        // WebElement clickSearch = driver.findElement(By.xpath("//button[@id='search-icon-legacy']"));
         //clickSearch.click();
         searchBar.sendKeys(Keys.ENTER);
         Thread.sleep(3000);
 // 4-Use for and if conditions to find the song
         List<WebElement> songs = driver.findElements(By.xpath("//a[@id='video-title']"));
-
         for (WebElement song : songs) {
             song.sendKeys(Keys.ARROW_DOWN);
-
-            Thread.sleep(1000);
+            Thread.sleep(250);
             if(song.getAttribute("title").trim().equals("Justin Bieber - Ghost")){
-                // 5-Click the song
+// 5-Click the song
                 song.click();
                 break;
             }
