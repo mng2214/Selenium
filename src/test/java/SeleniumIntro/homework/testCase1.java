@@ -40,23 +40,32 @@ public class testCase1 {
 
         WebElement nameCheck = driver.findElement(By.xpath("//p[@id = 'name']"));
         String nameValidation = nameCheck.getText().trim();
-        System.out.println(nameValidation.equals("Name:Artur")?"NAME PASSED":"NAME FAILED");
+        System.out.println(nameValidation.equals("Name:Artur") ? "NAME PASSED" : "NAME FAILED");
 
         WebElement emailChecked = driver.findElement(By.xpath("//p[@id = 'email']"));
         String emailValidation = emailChecked.getText().trim();
-        System.out.println(emailValidation.equals("Email:Artur1111@gmail.com")?"EMAIL PASSED":"EMAIL FAILED");
+        System.out.println(emailValidation.equals("Email:Artur1111@gmail.com") ? "EMAIL PASSED" : "EMAIL FAILED");
+
+
+        //checking if the same
 
         WebElement currentAddressValidation = driver.findElement(By.xpath("//p[@id = 'currentAddress']"));
         String addressTextCurrent = currentAddressValidation.getText().trim();
-        String currentCut = (addressTextCurrent.substring(addressTextCurrent.indexOf(":")+1));
+        String currentCut = (addressTextCurrent.substring(addressTextCurrent.indexOf(":") + 1));
 
         WebElement permanentAddressValidation = driver.findElement(By.xpath("//p[@id = 'permanentAddress']"));
         String addressTextPermanent = permanentAddressValidation.getText().trim();
-        String permanentCut = (addressTextPermanent.substring(addressTextPermanent.indexOf(":")+1));
+        String permanentCut = (addressTextPermanent.substring(addressTextPermanent.indexOf(":") + 1));
 
-        System.out.println(currentCut.equals(permanentCut)?"Address PASSED":"Address FILED");
+        System.out.println(currentCut.equals(permanentCut) ? "Address if THE SAME :  PASSED" : "Address if THE SAME :FILED");
 
+        // validate address
 
+        System.out.println(currentCut.equals("7200 Devon Ave, Des Plains, IL, 60755") ? "current address PASSED" : "current address FAILED");
+        System.out.println(permanentCut.equals("1000 Tech Ave, Des Plains, IL, 75456") ? "Permanent address PASSED" : "Permanent address FAILED");
+
+        Thread.sleep(10000);
+        driver.quit();
 
 
     }
