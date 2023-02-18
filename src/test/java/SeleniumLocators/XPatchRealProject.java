@@ -37,7 +37,7 @@ THESE PARTS SHOULD BE DONE BY CONTAINS or . XPATH METHOD
         WebElement clickAppoimnet = driver.findElement(By.xpath("//a[@id = 'btn-make-appointment']"));
 
         // 2-Click Make an Appointment
-
+        Thread.sleep(500);
         clickAppoimnet.click();
 
         // 3-Login the username and password provided and Login successfully
@@ -52,12 +52,12 @@ THESE PARTS SHOULD BE DONE BY CONTAINS or . XPATH METHOD
 
         WebElement loginClick = driver.findElement(By.xpath("//button[@id = 'btn-login' ]"));
         loginClick.click();
-
+        Thread.sleep(500);
         // 4-Choose the facility either HongKong or Seoul -->send keys
-
+        Thread.sleep(500);
         WebElement facility = driver.findElement(By.xpath("//select[@id = 'combo_facility']"));
         facility.sendKeys("Hongkong CURA Healthcare Center");
-
+        Thread.sleep(500);
         // 5-Click apply for hospital admission box if it is displayed and validate it is selected
         WebElement applyHospital = driver.findElement(By.xpath("//input[@id = 'chk_hospotal_readmission']"));
         if (applyHospital.isSelected() && applyHospital.isDisplayed()) {
@@ -66,41 +66,41 @@ THESE PARTS SHOULD BE DONE BY CONTAINS or . XPATH METHOD
 
 
         //6-Healthcare program 'Medicaid'
-
+        Thread.sleep(500);
         WebElement medicare = driver.findElement(By.xpath("//input[@id = 'radio_program_medicare']"));
         medicare.click();
         //7-Visit date should be provided -->send keys
-
+        Thread.sleep(500);
         WebElement date = driver.findElement(By.xpath("//input[@id = 'txt_visit_date']"));
         date.sendKeys("02/15/2023");
-
+        Thread.sleep(500);
         //9-Book your appointment
         WebElement book = driver.findElement(By.xpath("//button[@id = 'btn-book-appointment']"));
         book.click();
-
+        Thread.sleep(500);
         //10-Validate the header is "Appointment confirmation" (if statement)
         WebElement appointmentConfValidation = driver.findElement(By.xpath("//h2[contains(text(),'App')]"));
         String header = appointmentConfValidation.getText().trim();
         System.out.println(header.equals("Appointment Confirmation") ? "header pass" : "header failed");
         System.out.println(header);
-
+        Thread.sleep(500);
         //11-Print out the headers and values(only values) on your console.
         WebElement facilityChosen = driver.findElement(By.xpath("//p[@id = 'facility']"));
         System.out.println(facilityChosen.getText());
-
+        Thread.sleep(500);
         WebElement applyYesNo = driver.findElement(By.xpath("//p[@id = 'hospital_readmission']"));
         System.out.println(applyYesNo.getText());
-
+        Thread.sleep(500);
         WebElement healthCareProgram = driver.findElement(By.xpath("//p[@id = 'program']"));
         System.out.println(healthCareProgram.getText());
-
+        Thread.sleep(500);
         WebElement dateAppointment = driver.findElement(By.xpath("//p[@id = 'visit_date']"));
         dateAppointment.getText();
-
+        Thread.sleep(500);
         WebElement comment = driver.findElement(By.xpath("//p[@id = 'comment']"));
         String commentToString = comment.getText();
         System.out.println(commentToString.length() > 1 ? commentToString : "No Comment");
-
+        Thread.sleep(500);
         //12)Click go to homepage and print out url
         WebElement homePage = driver.findElement(By.xpath("//a[@class='btn btn-default']"));
         System.out.println(driver.getCurrentUrl());

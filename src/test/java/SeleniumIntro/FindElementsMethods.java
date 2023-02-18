@@ -26,7 +26,7 @@ public class FindElementsMethods {
 //                box.click();
 //            }
 //        }
-//
+
         driver.navigate().to("https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190814/examples/checkbox/checkbox-1/checkbox-1.html");
         List<WebElement> boxes = driver.findElements(By.xpath("//div[@aria-checked = 'false']"));
 

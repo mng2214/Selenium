@@ -17,18 +17,25 @@ public class LocatorPracticeXpath {
 
         WebElement firstName = driver.findElement(By.xpath("//input[@id = 'input-firstname']"));
         firstName.sendKeys("test1");
+        Thread.sleep(1000);
         WebElement lastName = driver.findElement(By.xpath("//input[@id = 'input-lastname']"));
         lastName.sendKeys("test2");
+        Thread.sleep(1000);
         WebElement email = driver.findElement(By.xpath("//input[@id = 'input-email']"));
-        email.sendKeys("testas4esdrjk5grasffd@mail.com");
+        email.sendKeys("tesgdsdsdghjghfd@mail.com");
+        Thread.sleep(1000);
         WebElement telephone = driver.findElement(By.xpath("//input[@id = 'input-telephone']"));
         telephone.sendKeys("2237737373");
+        Thread.sleep(1000);
         WebElement agree = driver.findElement(By.xpath("//input[@name = 'agree']"));
         agree.click();
+        Thread.sleep(1000);
         WebElement password = driver.findElement(By.xpath("//input[@id = 'input-password']"));
         password.sendKeys("Ar2tart123");
+        Thread.sleep(1000);
         WebElement passwordRepeat = driver.findElement(By.xpath("//input[@id = 'input-confirm']"));
         passwordRepeat.sendKeys("Ar2tart123");
+        Thread.sleep(1000);
         WebElement submit = driver.findElement(By.xpath("//input[@value = 'Continue']"));
         submit.click();
 
