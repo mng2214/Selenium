@@ -33,6 +33,7 @@ public class testCase3 {
         WebElement loginError = driver.findElement(By.xpath("//h3[@data-test = 'error']"));
         String ValidationLoginError = loginError.getText().trim();
         System.out.println(ValidationLoginError.equals("Epic sadface: Username and password do not match any user in this service")?"PASSED":"FAILED");
-
+        Thread.sleep(10000);
+        driver.quit();
     }
 }

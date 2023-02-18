@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class testCase4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -29,7 +29,8 @@ public class testCase4 {
 
         String link = driver.getCurrentUrl().trim();
         System.out.println(link.equals("https://www.saucedemo.com/inventory.html")?"PASSED":"FAILED");
-
+        Thread.sleep(10000);
+        driver.quit();
 
 
 
