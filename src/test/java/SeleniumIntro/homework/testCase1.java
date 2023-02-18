@@ -28,7 +28,7 @@ public class testCase1 {
         addressCurrent.sendKeys("7200 Devon Ave, Des Plains, IL, 60755");
 
         WebElement addressPermanent = driver.findElement(By.xpath("//textarea[@id = 'permanentAddress']"));
-        addressPermanent.sendKeys("7200 Devon Ave, Des Plains, IL, 60755");
+        addressPermanent.sendKeys("1000 Tech Ave, Des Plains, IL, 75456");
 
         //Click submit button.
 
@@ -45,6 +45,18 @@ public class testCase1 {
         WebElement emailChecked = driver.findElement(By.xpath("//p[@id = 'email']"));
         String emailValidation = emailChecked.getText().trim();
         System.out.println(emailValidation.equals("Email:Artur1111@gmail.com")?"EMAIL PASSED":"EMAIL FAILED");
+
+        WebElement currentAddressValidation = driver.findElement(By.xpath("//p[@id = 'currentAddress']"));
+        String addressTextCurrent = currentAddressValidation.getText().trim();
+        String currentCut = (addressTextCurrent.substring(addressTextCurrent.indexOf(":")+1));
+
+        WebElement permanentAddressValidation = driver.findElement(By.xpath("//p[@id = 'permanentAddress']"));
+        String addressTextPermanent = permanentAddressValidation.getText().trim();
+        String permanentCut = (addressTextPermanent.substring(addressTextPermanent.indexOf(":")+1));
+
+        System.out.println(currentCut.equals(permanentCut)?"Address PASSED":"Address FILED");
+
+
 
 
     }
