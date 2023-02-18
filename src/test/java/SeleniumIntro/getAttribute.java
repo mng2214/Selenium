@@ -34,9 +34,6 @@ public class getAttribute {
 
 
 
-//        WebElement loginClick = driver.findElement(By.xpath("//button[@id = 'btn-login' ]"));
-//        loginClick.click();
-
 
 
 
