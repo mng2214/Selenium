@@ -32,7 +32,7 @@ public class RealExamplePractice {
         // 5 condition for comparison
         System.out.println(actualTitle.equals(expectedTitle) ? "TITLE  PASSED" : "TITLE FAILED");
         System.out.println(actualUrl.equals(expectedUrl) ? "URL PASSED" : "URL FAILED");
-        driver.close();
+
 
     }
 }
