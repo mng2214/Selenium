@@ -266,8 +266,11 @@ public class homework2 {
         listCheckShopping.add("444993876233");
         listCheckShopping.add("03/24");
 
+
+
+
         for (int i = 0; i < listCheckOut.size() ||i < listCheckShopping.size(); i ++){
-            Assert.assertEquals(listCheckOut.get(i), listCheckShopping.get(i) );
+            Assert.assertTrue(listCheckOut.get(i).equals(listCheckShopping.get(i)));
             System.out.println(true);
         }
 
