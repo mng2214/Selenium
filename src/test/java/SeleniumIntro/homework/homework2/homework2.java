@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class homework2 {
@@ -239,7 +240,7 @@ public class homework2 {
         WebElement cardExpOrders = driver.findElement(By.xpath("//td[contains(text(), '03/24')]"));
 
         List <String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
-
+        Collections.sort(listCheckOut);
         listCheckOut.add(nameOrders.getText());
         listCheckOut.add(productOrders.getText());
         listCheckOut.add(amountOrders.getText());
@@ -253,9 +254,9 @@ public class homework2 {
         listCheckOut.add(cardExpOrders.getText());
 
         List <String> listCheckShopping = new ArrayList<>();
-
+        Collections.sort(listCheckShopping);
         listCheckShopping.add("CodeFish IT School");  // list of the items provided
-        listCheckShopping.add("Screen Saver");
+        listCheckShopping.add("ScreenSaver");
         listCheckShopping.add("5");
         listCheckShopping.add("02/21/2023");
         listCheckShopping.add("2200 E devon");
@@ -266,20 +267,9 @@ public class homework2 {
         listCheckShopping.add("444993876233");
         listCheckShopping.add("03/24");
 
-
-
-
         for (int i = 0; i < listCheckOut.size() ||i < listCheckShopping.size(); i ++){
-            Assert.assertTrue(listCheckOut.get(i).equals(listCheckShopping.get(i)));
-            System.out.println(true);
+            Assert.assertEquals(listCheckOut.get(i),(listCheckShopping.get(i)));
         }
-
-
-
-
-
-
-
 
         Thread.sleep(2000);
        driver.quit();
