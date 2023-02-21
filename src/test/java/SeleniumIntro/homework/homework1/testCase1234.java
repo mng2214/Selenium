@@ -1,4 +1,4 @@
-package SeleniumIntro.homework;
+package SeleniumIntro.homework.homework1;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.bonigarcia.wdm.WebDriverManager;
