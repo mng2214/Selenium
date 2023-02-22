@@ -144,6 +144,7 @@ public class homework2 {
 
     @Test          //Test Case 4  << -------------------
     public void testCase4() throws InterruptedException {
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
