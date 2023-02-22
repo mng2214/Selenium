@@ -235,7 +235,7 @@ public class homework2 {
         WebElement cardTypeOrders = driver.findElement(By.xpath("//td[contains(text(), 'MasterCard')]"));
         WebElement cardNumOrders = driver.findElement(By.xpath("//td[contains(text(), '444993876233')]"));
         WebElement cardExpOrders = driver.findElement(By.xpath("//td[contains(text(), '03/24')]"));
-
+///
 //        List<String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
 //        Collections.sort(listCheckOut);
 //        listCheckOut.add(nameOrders.getText());
