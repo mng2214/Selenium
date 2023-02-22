@@ -227,7 +227,7 @@ public class homework2 {
         WebElement nameOrders = driver.findElement(By.xpath("//td[contains(text(), 'CodeFish IT School')]"));
         WebElement productOrders = driver.findElement(By.xpath("//td[contains(text(), 'ScreenSaver')]"));
         WebElement amountOrders = driver.findElement(By.xpath("//td[contains(text(), '5')]"));
-        WebElement dateOrders = driver.findElement(By.xpath("//td[contains(text(), '02/21/2023')]"));
+        WebElement dateOrders = driver.findElement(By.xpath("//td[contains(text(), '02/22/2023')]")); ////////////////////////
         WebElement streetOrders = driver.findElement(By.xpath("//td[contains(text(), '2200 E devon')]"));
         WebElement cityOrders = driver.findElement(By.xpath("//td[contains(text(), 'Des Plaines')]"));
         WebElement stateOrders = driver.findElement(By.xpath("//td[contains(text(), 'Illinois')]"));
@@ -236,21 +236,26 @@ public class homework2 {
         WebElement cardNumOrders = driver.findElement(By.xpath("//td[contains(text(), '444993876233')]"));
         WebElement cardExpOrders = driver.findElement(By.xpath("//td[contains(text(), '03/24')]"));
 
-        List<String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
-        Collections.sort(listCheckOut);
-        listCheckOut.add(nameOrders.getText());
-        listCheckOut.add(productOrders.getText());
-        listCheckOut.add(amountOrders.getText());
-        listCheckOut.add(dateOrders.getText());
-        listCheckOut.add(streetOrders.getText());
-        listCheckOut.add(cityOrders.getText());
-        listCheckOut.add(stateOrders.getText());
-        listCheckOut.add(zipOrders.getText());
-        listCheckOut.add(cardTypeOrders.getText());
-        listCheckOut.add(cardNumOrders.getText());
-        listCheckOut.add(cardExpOrders.getText());
+//        List<String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
+//        Collections.sort(listCheckOut);
+//        listCheckOut.add(nameOrders.getText());
+//        listCheckOut.add(productOrders.getText());
+//        listCheckOut.add(amountOrders.getText());
+//        listCheckOut.add(dateOrders.getText());
+//        listCheckOut.add(streetOrders.getText());
+//        listCheckOut.add(cityOrders.getText());
+//        listCheckOut.add(stateOrders.getText());
+//        listCheckOut.add(zipOrders.getText());
+//        listCheckOut.add(cardTypeOrders.getText());
+//        listCheckOut.add(cardNumOrders.getText());
+//        listCheckOut.add(cardExpOrders.getText());
 
-        // how can i get info with help of for i loop because there are a lot of orders on the page and idk with one to take?
+        List<WebElement> listCheckOut = driver.findElements(By.xpath("//tr[2]//td"));
+        List<String> listCheckOutActual = new ArrayList<>();
+
+        for (int i = 1; i < listCheckOut.size() - 1; i++) {
+            listCheckOutActual.add(listCheckOut.get(i).getText().trim());
+        }
 
         List<String> listCheckShopping = new ArrayList<>();
         Collections.sort(listCheckShopping);
@@ -258,7 +263,7 @@ public class homework2 {
         listCheckShopping.add("CodeFish IT School");  // list of the items provided
         listCheckShopping.add("ScreenSaver");
         listCheckShopping.add("5");
-        listCheckShopping.add("02/21/2023");
+        listCheckShopping.add("02/22/2023");
         listCheckShopping.add("2200 E devon");
         listCheckShopping.add("Des Plaines");
         listCheckShopping.add("Illinois");
@@ -267,10 +272,11 @@ public class homework2 {
         listCheckShopping.add("444993876233");
         listCheckShopping.add("03/24");
 
-        for (int i = 0; i < listCheckOut.size() || i < listCheckShopping.size(); i++) {
-            Assert.assertEquals(listCheckOut.get(i), (listCheckShopping.get(i)));
+        for (int i = 0; i < listCheckShopping.size(); i++) {
+            Assert.assertEquals(listCheckOutActual.get(i), listCheckShopping.get(i));
         }
-
+        System.out.println(listCheckOutActual);
+        System.out.println(listCheckShopping);
         Thread.sleep(2000);
         driver.quit();
     }
