@@ -123,22 +123,19 @@ public class homework2 {
         Thread.sleep(1000);
 
         WebElement viewAllOrders = driver.findElement(By.xpath("//a[.='View all orders']"));
-        String viewAllOrdersStr = viewAllOrders.getAttribute("href").trim().substring(viewAllOrders.getAttribute("href").lastIndexOf("/") + 1);
+        String viewAllOrdersStr = viewAllOrders.getAttribute("href").trim();
         String expectedViewOrders = "Default.aspx";
-        Assert.assertEquals(expectedViewOrders, viewAllOrdersStr);
+        Assert.assertTrue(viewAllOrdersStr.contains("Default.aspx"), expectedViewOrders);
 
         WebElement viewAllProducts = driver.findElement(By.xpath("//a[.='View all products']"));
-        String viewAllProductsStr = viewAllProducts.getAttribute("href").trim().substring(viewAllProducts.getAttribute("href").lastIndexOf("/") + 1);
-        ;
+        String viewAllProductsStr = viewAllProducts.getAttribute("href").trim();
         String expectedProducts = "Products.aspx";
-        Assert.assertEquals(expectedProducts, viewAllProductsStr);
+        Assert.assertTrue(viewAllProductsStr.contains("Products.aspx"), expectedProducts);
 
         WebElement order = driver.findElement(By.xpath("//a[.='Order']"));
-        String orderStr = order.getAttribute("href").trim().substring(order.getAttribute("href").lastIndexOf("/") + 1);
-        ;
-        ;
+        String orderStr = order.getAttribute("href").trim();
         String expectedOrders = "Process.aspx";
-        Assert.assertEquals(expectedOrders, orderStr);
+        Assert.assertTrue(orderStr.contains("Process.aspx"), expectedOrders);
 
         Thread.sleep(2000);
         driver.quit();
@@ -221,7 +218,7 @@ public class homework2 {
         WebElement confirmation = driver.findElement(By.tagName("strong"));
         String actualConfirmation = confirmation.getText().trim();
         String expectedConfirmation = "New order has been successfully added.";
-        Assert.assertEquals(actualConfirmation,expectedConfirmation);
+        Assert.assertEquals(actualConfirmation, expectedConfirmation);
         //Click View all orders button
         WebElement viewAllOrders = driver.findElement(By.xpath("//a[contains(text(), 'View all orders')]"));
         viewAllOrders.click();
@@ -239,7 +236,7 @@ public class homework2 {
         WebElement cardNumOrders = driver.findElement(By.xpath("//td[contains(text(), '444993876233')]"));
         WebElement cardExpOrders = driver.findElement(By.xpath("//td[contains(text(), '03/24')]"));
 
-        List <String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
+        List<String> listCheckOut = new ArrayList<>();  // list of the items on check view all orders page
         Collections.sort(listCheckOut);
         listCheckOut.add(nameOrders.getText());
         listCheckOut.add(productOrders.getText());
@@ -253,8 +250,11 @@ public class homework2 {
         listCheckOut.add(cardNumOrders.getText());
         listCheckOut.add(cardExpOrders.getText());
 
-        List <String> listCheckShopping = new ArrayList<>();
+        // how can i get info with help of for i loop because there are a lot of orders on the page and idk with one to take?
+
+        List<String> listCheckShopping = new ArrayList<>();
         Collections.sort(listCheckShopping);
+
         listCheckShopping.add("CodeFish IT School");  // list of the items provided
         listCheckShopping.add("ScreenSaver");
         listCheckShopping.add("5");
@@ -267,11 +267,11 @@ public class homework2 {
         listCheckShopping.add("444993876233");
         listCheckShopping.add("03/24");
 
-        for (int i = 0; i < listCheckOut.size() ||i < listCheckShopping.size(); i ++){
-            Assert.assertEquals(listCheckOut.get(i),(listCheckShopping.get(i)));
+        for (int i = 0; i < listCheckOut.size() || i < listCheckShopping.size(); i++) {
+            Assert.assertEquals(listCheckOut.get(i), (listCheckShopping.get(i)));
         }
 
         Thread.sleep(2000);
-       driver.quit();
+        driver.quit();
     }
 }
