@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.BrowserUtils;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -58,6 +59,26 @@ public class SelectPractice {
         driver.quit();
     }
 
+    @Test
+    public void multipleSelect () throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.navigate().to("file:///C:/Users/mng22/OneDrive/Desktop/Techtorialhtml.html");
+
+        WebElement countyBox = driver.findElement(By.cssSelector(".select"));
+        Select county = new Select(countyBox);
+        county.selectByVisibleText("One");
+        Thread.sleep(1500);
+        county.selectByValue("3");
+        Thread.sleep(1500);
+        county.selectByIndex(4);
+        Thread.sleep(1500);
+        county.deselectByVisibleText("One");
+        Thread.sleep(1500);
+        county.deselectAll();
+    }
     /*
 1-Navigate to the website
 2-Select one way trip button
@@ -163,6 +184,88 @@ NOTE2:You can use any select method value,visibleText
         Thread.sleep(5000);
         driver.quit();
 
+    }
 
+
+
+
+
+
+    @Test
+    public void shortCutsSelectClass() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.navigate().to("https://demo.guru99.com/test/newtours/reservation.php");
+
+        WebElement flightType = driver.findElement(By.xpath("//input[@value='oneway']"));
+        flightType.click();
+        Thread.sleep(3000);
+
+
+        WebElement passengers = driver.findElement(By.xpath("//select[@name='passCount']"));
+        BrowserUtils.selectBy(passengers,"4","index");
+        Thread.sleep(3000);
+
+
+        WebElement departingFrom = driver.findElement(By.xpath("//select[@name='fromPort']"));
+        Select departingOptions = new Select(departingFrom);
+        String selectedExpected = "Acapulco";
+        Assert.assertEquals(departingOptions.getFirstSelectedOption().getText(), selectedExpected);
+        departingOptions.selectByValue("Paris");
+
+
+        WebElement on = driver.findElement(By.xpath("//select[@name='fromMonth']"));
+        BrowserUtils.selectBy(on,"August","text");
+        Thread.sleep(500);
+
+
+        WebElement onDay = driver.findElement(By.xpath("//select[@name='fromDay']"));
+        Thread.sleep(500);
+        BrowserUtils.selectBy(onDay, "15", "text");
+
+
+        WebElement arrive = driver.findElement(By.xpath("//select[@name='toPort']"));
+        BrowserUtils.selectBy(arrive,"San Francisco","text" );
+        Thread.sleep(500);
+
+
+        WebElement toDate = driver.findElement(By.xpath("//select[@name='toMonth']"));
+        BrowserUtils.selectBy(toDate,"December", "text");
+        Thread.sleep(500);
+
+        WebElement onMonth = driver.findElement(By.xpath("//select[@name='toDay']"));
+        BrowserUtils.selectBy(onMonth,"15","text");
+        Thread.sleep(500);
+
+        WebElement firstClass = driver.findElement(By.xpath("//input[@value='First']"));
+        firstClass.click();
+        Thread.sleep(500);
+
+        WebElement airline = driver.findElement(By.xpath("//select [@name='airline']"));
+        BrowserUtils.selectBy(airline,"Unified Airlines","text");
+        Thread.sleep(500);
+
+        WebElement validation = driver.findElement(By.xpath("//select[@name='airline']"));
+        Select airValidation = new Select(validation);
+
+        List<WebElement> actualValidation = airValidation.getOptions();
+        List<String> expectedValidation = Arrays.asList("No Preference", "Blue Skies Airlines", "Unified Airlines", "Pangea Airlines");
+        for (int i = 0; i < actualValidation.size(); i++) {
+            Assert.assertEquals(actualValidation.get(i).getText(), expectedValidation.get(i));
+        }
+
+        WebElement count = driver.findElement(By.xpath("//input[@name='findFlights']"));
+        count.click();
+        Thread.sleep(500);
+
+        WebElement validation2 = driver.findElement(By.xpath("//font[@size='4']"));
+        String actual = BrowserUtils.getText(validation2);
+        String expected = "After flight finder - No Seats Avaialble";
+        Assert.assertEquals(actual, expected);
+
+        Thread.sleep(5000);
+        driver.quit();
     }
 }
