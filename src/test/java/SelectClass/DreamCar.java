@@ -58,9 +58,10 @@ NOTE: Please use browser utils for the select classes if it is needed.
         Thread.sleep(100);
 
         WebElement priceValidation = driver.findElement(By.cssSelector("#make-model-max-price"));
-        String expectedPriceValidation = "No max price";
-        Select actualPrice = new Select(priceValidation);
-        Assert.assertEquals(actualPrice.getFirstSelectedOption().getText().trim(), expectedPriceValidation);
+        BrowserUtils.getFirstSelectedOption(priceValidation, "No max price");
+//        String expectedPriceValidation = "No max price";
+//        Select actualPrice = new Select(priceValidation);
+//        Assert.assertEquals(actualPrice.getFirstSelectedOption().getText().trim(), expectedPriceValidation);
         Thread.sleep(2000);
 
 
@@ -102,7 +103,7 @@ NOTE: Please use browser utils for the select classes if it is needed.
         System.out.println("----------");
         Thread.sleep(2000);
 
-        for (int i = 0; i < carPrices.size(); i++){
+        for (int i = 0; i < carPrices.size(); i++) {
             Assert.assertEquals(StringListActual.get(i), StringListActual.get(i));
         }
         System.out.println(StringListActual);
