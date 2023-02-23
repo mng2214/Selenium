@@ -77,25 +77,27 @@ NOTE: Please use browser utils for the select classes if it is needed.
 
         WebElement search = driver.findElement(By.xpath("//button [@data-linkname='search-new-make']"));
         search.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
 
         WebElement lowestPrice = driver.findElement(By.cssSelector("#sort-dropdown"));
         BrowserUtils.selectBy(lowestPrice, "Lowest price", "text");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
 //HOME WORK 2/22 FROM AHMET --------------------------------------------------------------------------------------------------------------
+        // After i click on *LOWEST PRICE*  need to validate if all cars appears from CHEAPEST TO MORE EXPANSIVE
         List<WebElement> carPrices = driver.findElements(By.xpath("//span[@class ='primary-price']"));
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         List<Integer> StringListActual = new ArrayList<>();
         List<Integer> StringListExpected = new ArrayList<>();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         for (WebElement carPrice : carPrices) {
+            Thread.sleep(100);
             StringListExpected.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
             StringListActual.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
         }
-
+        Thread.sleep(3000);
         Collections.sort(StringListExpected);
         System.out.println("----------");
         Thread.sleep(2000);
