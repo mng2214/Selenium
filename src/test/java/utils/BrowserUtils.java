@@ -7,9 +7,7 @@ import org.testng.Assert;
 public class BrowserUtils {
     //WITH OUT CREATING SELECT ELEMENT FOR EVERY CASE
     public static void selectBy(WebElement location, String value, String methodName) {
-
         Select select = new Select(location);
-
         switch (methodName) {
             case "text":
                 select.selectByVisibleText(value);
@@ -30,6 +28,7 @@ public class BrowserUtils {
     public static String getText(WebElement element) {
         return element.getText().trim();
     }
+
 
     //GET FIST SELECTED OPTION WITH OUT CREATING AN OBJECT
     public static void getFirstSelectedOption(WebElement location, String expectedValue) {

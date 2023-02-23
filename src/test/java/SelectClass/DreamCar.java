@@ -94,7 +94,7 @@ NOTE: Please use browser utils for the select classes if it is needed.
 
         Thread.sleep(3000);
         for (WebElement carPrice : carPrices) {
-            Thread.sleep(100);
+            //Thread.sleep(100);
             StringListExpected.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
             StringListActual.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
         }
@@ -116,7 +116,6 @@ NOTE: Please use browser utils for the select classes if it is needed.
         for (WebElement car : cars) {
             Assert.assertTrue(BrowserUtils.getText(car).contains("Lexus RX 350"));
         }
-
 
         Thread.sleep(3000);
         driver.quit();
