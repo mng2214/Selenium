@@ -1,14 +1,13 @@
-package SeleniumIntro.homework.homework1;
+package homework.homework1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import javax.swing.plaf.TableHeaderUI;
 import java.time.Duration;
 
-public class testCase3 {
+public class testCase4 {
     public static void main(String[] args) throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -18,22 +17,26 @@ public class testCase3 {
         //Navigate to "https://www.saucedemo.com/"
         driver.navigate().to("https://www.saucedemo.com/");
 
-        //Enter username "Java"
+        //Enter username "standard_user"
         WebElement userName = driver.findElement(By.xpath("//input[@id= 'user-name']"));
-        userName.sendKeys("Java");
-        //Enter password "Selenium"
+        userName.sendKeys("standard_user");
+        //Enter password "secret_sauce"
         WebElement password = driver.findElement(By.xpath("//input[@id= 'password']"));
-        password.sendKeys("Selenium");
+        password.sendKeys("secret_sauce");
         //Click Login button
         WebElement loginButton = driver.findElement(By.xpath("//input[@id= 'login-button']"));
         loginButton.click();
 
-        Thread.sleep(2000);
-
-        WebElement loginError = driver.findElement(By.xpath("//h3[@data-test = 'error']"));
-        String ValidationLoginError = loginError.getText().trim();
-        System.out.println(ValidationLoginError.equals("Epic sadface: Username and password do not match any user in this service")?"PASSED":"FAILED");
+        String link = driver.getCurrentUrl().trim();
+        System.out.println(link.equals("https://www.saucedemo.com/inventory.html")?"PASSED":"FAILED");
         Thread.sleep(10000);
         driver.quit();
+
+
+
+
+
+
+
     }
 }

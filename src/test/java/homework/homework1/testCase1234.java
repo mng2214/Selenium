@@ -1,8 +1,6 @@
-package SeleniumIntro.homework.homework1;
+package homework.homework1;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
-import java.security.Key;
 import java.time.Duration;
 
 public class testCase1234 {

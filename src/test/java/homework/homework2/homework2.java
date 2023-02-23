@@ -1,6 +1,5 @@
-package SeleniumIntro.homework.homework2;
+package homework.homework2;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

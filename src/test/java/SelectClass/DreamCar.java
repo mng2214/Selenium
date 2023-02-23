@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
 import utils.BrowserUtils;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static io.netty.util.internal.SystemPropertyUtil.contains;
@@ -59,7 +61,8 @@ NOTE: Please use browser utils for the select classes if it is needed.
         String expectedPriceValidation = "No max price";
         Select actualPrice = new Select(priceValidation);
         Assert.assertEquals(actualPrice.getFirstSelectedOption().getText().trim(), expectedPriceValidation);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+
 
         WebElement distance = driver.findElement(By.cssSelector("#make-model-maximum-distance"));
         BrowserUtils.selectBy(distance, "40", "value");
@@ -74,19 +77,43 @@ NOTE: Please use browser utils for the select classes if it is needed.
 
         WebElement search = driver.findElement(By.xpath("//button [@data-linkname='search-new-make']"));
         search.click();
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
 
         WebElement lowestPrice = driver.findElement(By.cssSelector("#sort-dropdown"));
-        BrowserUtils.selectBy(lowestPrice, "Lowest price" , "text");
-        Thread.sleep(100);
+        BrowserUtils.selectBy(lowestPrice, "Lowest price", "text");
+        Thread.sleep(2000);
 
+//HOME WORK 2/22 FROM AHMET --------------------------------------------------------------------------------------------------------------
+        List<WebElement> carPrices = driver.findElements(By.xpath("//span[@class ='primary-price']"));
+        Thread.sleep(2000);
+        List<Integer> StringListActual = new ArrayList<>();
+        List<Integer> StringListExpected = new ArrayList<>();
 
         Thread.sleep(2000);
+        for (WebElement carPrice : carPrices) {
+            StringListExpected.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
+            StringListActual.add(Integer.parseInt(BrowserUtils.getText(carPrice).replace("$", "").replace(",", "")));
+        }
+
+        Collections.sort(StringListExpected);
+        System.out.println("----------");
+        Thread.sleep(2000);
+
+        for (int i = 0; i < carPrices.size(); i++){
+            Assert.assertEquals(StringListActual.get(i), StringListActual.get(i));
+        }
+        System.out.println(StringListActual);
+        System.out.println(StringListExpected);
+        Thread.sleep(2000);
+
+//HOME WORK 2/22 FROM AHMET --------------------------------------------------------------------------------------------------------------
+
         List<WebElement> cars = driver.findElements(By.xpath("//h2[@class ='title']"));
         for (WebElement car : cars) {
             Assert.assertTrue(BrowserUtils.getText(car).contains("Lexus RX 350"));
         }
+
 
         Thread.sleep(3000);
         driver.quit();
