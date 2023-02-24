@@ -35,8 +35,8 @@ NOTE: Please use browser utils for the select classes if it is needed.
 11-Validate the all titles has Lexus RX 350
 
      */
-    @Test
-    public void validateHeader() throws InterruptedException {
+     @Test(invocationCount = 10)
+    public void validateHeader() throws InterruptedException  {
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -87,6 +87,7 @@ NOTE: Please use browser utils for the select classes if it is needed.
 
 //HOME WORK 2/22 FROM AHMET --------------------------------------------------------------------------------------------------------------
         // After i click on *LOWEST PRICE*  need to validate if all cars appears from CHEAPEST TO MORE EXPANSIVE
+
         List<WebElement> carPrices = driver.findElements(By.xpath("//span[@class ='primary-price']"));
         Thread.sleep(3000);
         List<Integer> StringListActual = new ArrayList<>();
@@ -119,6 +120,6 @@ NOTE: Please use browser utils for the select classes if it is needed.
 
         Thread.sleep(3000);
         driver.quit();
-    }
 
+    }
 }
