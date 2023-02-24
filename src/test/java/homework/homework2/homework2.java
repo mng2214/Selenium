@@ -235,8 +235,8 @@ public class homework2 {
         List<String> listCheckShopping = Arrays.asList("CodeFish IT School", "ScreenSaver", "5", "02/24/2023", "2200 E devon", "Des Plaines", "Illinois", "60018", "MasterCard", "444993876233", "03/24");
         Collections.sort(listCheckShopping);
         Collections.sort(listCheckOutActual);
-        System.out.println(listCheckShopping);
-        System.out.println(listCheckOutActual);
+//        System.out.println(listCheckShopping);
+//        System.out.println(listCheckOutActual);
 
         Thread.sleep(3000);
         for (int i = 0; i < listCheckShopping.size(); i++) {
