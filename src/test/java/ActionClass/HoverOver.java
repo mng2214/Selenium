@@ -63,6 +63,8 @@ public class HoverOver {
         Map<String, String> map = new LinkedHashMap<>();
         Thread.sleep(500);
 
+        actions.scrollByAmount(0,400);
+
         for (int i = 0; i < imagesHoverOver.size(); i++) {
             actions.moveToElement(imagesHoverOver.get(i)).perform();
             map.put(BrowserUtils.getText(names.get(i)), BrowserUtils.getText(prices.get(i)));
