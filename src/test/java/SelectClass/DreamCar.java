@@ -42,7 +42,7 @@ NOTE: Please use browser utils for the select classes if it is needed.
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        driver.get("https://www.cars.com/");
+        driver.navigate().to("https://www.cars.com/");
 
         WebElement newUsedChose = driver.findElement(By.cssSelector("#make-model-search-stocktype"));
         BrowserUtils.selectBy(newUsedChose, "New", "text");
