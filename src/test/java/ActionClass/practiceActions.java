@@ -41,4 +41,34 @@ public class practiceActions {
 
 
     }
+
+    @Test(invocationCount = 1)
+    public void validateNonAcceptableFunctionality() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.navigate().to("https://demoqa.com/droppable");
+        Thread.sleep(1500);
+        Actions actions = new Actions(driver);
+
+        WebElement accept = driver.findElement(By.cssSelector("#droppableExample-tab-accept"));
+        accept.click();
+        Thread.sleep(1500);
+
+        WebElement notAcceptable = driver.findElement(By.cssSelector("#notAcceptable"));
+        String actualNotAcceptable = BrowserUtils.getText(notAcceptable);
+        String expectedNotAcceptable = "Not Acceptable";
+        Assert.assertEquals(actualNotAcceptable, expectedNotAcceptable);
+
+        Thread.sleep(1000);
+        WebElement dropArea = driver.findElement(By.xpath("//div[@class='accept-drop-container']//div[@id = 'droppable']"));
+        actions.clickAndHold(notAcceptable).moveToElement(dropArea).release().perform();
+
+        WebElement dropText = driver.findElement(By.xpath("//div[@class='accept-drop-container']//p[contains(text(), 'Drop here')]"));
+        String actualDropText = BrowserUtils.getText(dropText);
+        String expectedDropText = "Drop here";
+        Assert.assertEquals(actualDropText, expectedDropText);
+
+    }
 }
