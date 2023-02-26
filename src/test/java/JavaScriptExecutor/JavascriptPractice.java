@@ -25,7 +25,7 @@ public class JavascriptPractice {
         driver.navigate().to("https://www.techtorialacademy.com/");
 
         Thread.sleep(1000);
-        WebElement copyRight = driver.findElement(By.xpath("//div[contains(text(), 'Copyright © 2023')]"));
+        WebElement copyRight = driver.findElement(By.xpath("//div[contains(text(), 'Copyright ©')]"));
         BrowserUtils.scrollWithJS(driver,copyRight);
         Thread.sleep(1000);
         String actualCopyRight = BrowserUtils.getText(copyRight);
@@ -41,16 +41,11 @@ public class JavascriptPractice {
         Thread.sleep(500);
 
         List<WebElement> elements = driver.findElements(By.xpath("//h3[@data-element-id = 'heading3Normal']"));
-
-        List <String> actualElements = new ArrayList<>();
         List <String> expectedElements = Arrays.asList("info@techtorialacademy.com","+ 1 (224) 570 91 91","Chicago & Houston");
 
-        for (WebElement element : elements){
-            actualElements.add(BrowserUtils.getText(element));
-        }
 
-        for (int i = 0  ; i < actualElements.size();i ++ ){
-            Assert.assertEquals(actualElements.get(i),expectedElements.get(i) );
+        for (int i = 0  ; i < elements.size();i ++ ){
+            Assert.assertEquals(BrowserUtils.getText(elements.get(i)),expectedElements.get(i) );
         }
     }
 }
