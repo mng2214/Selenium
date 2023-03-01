@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import java.util.Set;
+
 public class BrowserUtils {
     //WITH OUT CREATING SELECT ELEMENT FOR EVERY CASE
     public static void selectBy(WebElement location, String value, String methodName) {
@@ -43,14 +45,36 @@ public class BrowserUtils {
         return js.executeScript("return document.title").toString().trim();
     }
 
-    public static void clickWithJS(WebDriver driver, WebElement element){
+    public static void clickWithJS(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click()",element);
+        js.executeScript("arguments[0].click()", element);
     }
 
-    public static void scrollWithJS (WebDriver driver, WebElement element){
+    public static void scrollWithJS(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true)", element);
 
     }
+
+    public static void switchByID(WebDriver driver) {
+        String mainPageId = driver.getWindowHandle();
+        Set<String> allPagesId = driver.getWindowHandles();
+        for (String id : allPagesId) {
+            if (!id.equals(mainPageId)) {
+                driver.switchTo().window(id);
+            }
+        }
+    }
+
+    public static void switchByTitle(WebDriver driver, String title) {
+        Set<String> allPagesId = driver.getWindowHandles();
+        for (String id : allPagesId) {
+            driver.switchTo().window(id);
+            if (driver.getTitle().contains(title)) {
+                break;
+            }
+        }
+    }
+
+
 }

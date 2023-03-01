@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import utils.BrowserUtils;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Set;
 
 public class SwitchWindow {
@@ -79,6 +80,52 @@ public class SwitchWindow {
         Assert.assertEquals(actualTitle, expectedTitle);
         System.out.println(expectedTitle);
         System.out.println(actualTitle);
+
+    }
+
+
+    @Test
+    public void practice1 () throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.navigate().to("https://www.hyrtutorials.com/p/window-handles-practice.html");
+
+        WebElement newTab = driver.findElement(By.xpath("//button[@id='newTabBtn']"));
+        newTab.click();
+        Thread.sleep(1000);
+
+        String mainID = driver.getWindowHandle();
+        Set <String> IDs = driver.getWindowHandles();
+
+        for (String ID :IDs){
+            if (!ID.equals(mainID)){
+                driver.switchTo().window(ID);
+                break;
+            }
+        }
+
+        Thread.sleep(1000);
+
+        String actualTitle = driver.getTitle().trim();
+        String expectedTitle = "AlertsDemo - H Y R Tutorials";
+        Assert.assertEquals(actualTitle,expectedTitle);
+
+        Thread.sleep(1000);
+
+        WebElement alertDemo = driver.findElement(By.xpath("//h1[@itemprop ='name']"));
+        String actual = BrowserUtils.getText(alertDemo);
+        String expected = "AlertsDemo";
+        Assert.assertEquals(actual,expected);
+
+        Thread.sleep(1000);
+
+        WebElement click = driver.findElement(By.cssSelector("#alertBox"));
+        click.click();
+        Thread.sleep(1000);
+        driver.quit();
+
 
     }
 }
