@@ -109,7 +109,6 @@ public class SwitchMultipleWindows {
         String expected2 = "Window Handles Practice";
         Assert.assertEquals(actual2, expected2);
 
-
         BrowserUtils.switchByTitle(driver, "AlertsDemo");
         WebElement click = driver.findElement(By.cssSelector("#alertBox"));
         click.click();
