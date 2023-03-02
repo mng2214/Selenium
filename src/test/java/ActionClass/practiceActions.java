@@ -13,7 +13,9 @@ import utils.BrowserUtils;
 import javax.sql.rowset.BaseRowSet;
 import java.time.Duration;
 
-public class practiceActions {
+public class
+
+practiceActions {
     @Test
     public void validateMessageAndColor() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
