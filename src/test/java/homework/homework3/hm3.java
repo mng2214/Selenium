@@ -216,7 +216,8 @@ public class hm3 {
         //Validate Alert has "Double Clicked !!" text
 
         Thread.sleep(1000);
-        Assert.assertEquals(driver.switchTo().alert().getText().trim(), "Double Clicked !!");
+        Assert.assertEquals(driver.switchTo().alert().getText().trim(),"Double Clicked !!");
+        Thread.sleep(2000);
 
         //Click Okay button to close the alert
 
