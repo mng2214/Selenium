@@ -16,7 +16,7 @@ import java.util.List;
 
 public class hm3 {
     @Test
-    public void testcase2() throws InterruptedException {
+    public void testcase2and2and3() throws InterruptedException {
         System.out.println("-------------TEST CASE 2.1 --------------");
         //Navigate to the "http://uitestpractice.com/Students/Index"
 
@@ -30,6 +30,13 @@ public class hm3 {
 
         driver.findElement(By.xpath("//a[contains(text(),'Create New')]")).click();
         Thread.sleep(1000);
+
+        //
+        driver.switchTo().frame("aswift_2");
+        driver.switchTo().frame("ad_iframe");
+        driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
+        driver.switchTo().parentFrame();
+        //
 
         //Enter any firstname, lastname and enrollment date
 
@@ -54,14 +61,13 @@ public class hm3 {
 
         //Validate the new information is created
 
-        List<WebElement> firstNameValidation = driver.findElements(By.xpath("//tr//td[1]"));
-        List<WebElement> lastNameValidation = driver.findElements(By.xpath("//tr//td[2]"));
+        WebElement firstNameValidation = driver.findElement(By.xpath("//tr//td[1]"));
+        WebElement lastNameValidation = driver.findElement(By.xpath("//tr//td[2]"));
         String expectedFirstName = "artur", expectedLastName = "mng";
-        for (int i = 0; i < firstNameValidation.size(); i++) {
-            Assert.assertEquals(BrowserUtils.getText(firstNameValidation.get(i)), expectedFirstName);
-            Assert.assertEquals(BrowserUtils.getText(lastNameValidation.get(i)), expectedLastName);
-            break;
-        }
+
+        Assert.assertEquals(BrowserUtils.getText(firstNameValidation), expectedFirstName);
+        Assert.assertEquals(BrowserUtils.getText(lastNameValidation), expectedLastName);
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------
         System.out.println("-------------TEST CASE 2.2 --------------");
@@ -102,7 +108,6 @@ public class hm3 {
         Thread.sleep(1500);
 
 
-
         //---------------------------------------------------------------------------------------------------------------------------
         System.out.println("-------------TEST CASE 3 --------------");
         //Search any Lastname in search bar
@@ -139,7 +144,7 @@ public class hm3 {
 
     @Test
     public void testcase4() throws InterruptedException {
-
+        System.out.println("-------------TEST CASE 4 --------------");
         //Navigate to the "http://uitestpractice.com/"
 
         WebDriverManager.chromedriver().setup();
@@ -149,7 +154,6 @@ public class hm3 {
         driver.navigate().to("http://uitestpractice.com/");
         Actions actions = new Actions(driver);
 
-        System.out.println("-------------TEST CASE 4 --------------");
 
         //Move small box into the Drop Here box
 
@@ -170,6 +174,7 @@ public class hm3 {
 
     @Test
     public void testcase5() throws InterruptedException {
+        System.out.println("-------------TEST CASE 5 --------------");
 
         //Navigate to the "http://uitestpractice.com/"
 
@@ -180,16 +185,14 @@ public class hm3 {
         driver.navigate().to("http://uitestpractice.com/");
         Actions actions = new Actions(driver);
 
-        System.out.println("-------------TEST CASE 5 --------------");
-
         WebElement dblClick = driver.findElement(By.xpath("//button[@name='dblClick']"));
         actions.doubleClick(dblClick).perform();
 
         //Validate Alert has "Double Clicked !!" text
 
         Thread.sleep(1000);
-        Assert.assertEquals(driver.switchTo().alert().getText().trim(),"Double Clicked !!");
-        Thread.sleep(2000);
+        Assert.assertEquals(driver.switchTo().alert().getText().trim(), "Double Clicked !!");
+        Thread.sleep(1000);
 
         //Click Okay button to close the alert
 
@@ -200,7 +203,7 @@ public class hm3 {
 
     @Test
     public void testcase6() throws InterruptedException {
-
+        System.out.println("-------------TEST CASE 6 --------------");
         //Navigate to the "http://uitestpractice.com/"
 
         WebDriverManager.chromedriver().setup();
@@ -210,14 +213,14 @@ public class hm3 {
         driver.navigate().to("http://uitestpractice.com/");
         Actions actions = new Actions(driver);
 
-        System.out.println("-------------TEST CASE 6 --------------");
-
         //Enter your name inside the iframe
 
         WebElement iframe1 = driver.findElement(By.xpath("//iframe[@name='iframe_a']"));
         driver.switchTo().frame(iframe1);
 
+
         //Enter your name inside the iframe
+
 
         WebElement name = driver.findElement(By.cssSelector("#name"));
         name.sendKeys("artur");
@@ -226,12 +229,11 @@ public class hm3 {
         //Click the link inside the Iframe box
 
         driver.findElement(By.xpath("//a[@target='iframe_a']")).click();
-        iframe1 = driver.findElement(By.xpath("//iframe[@name='iframe_a']"));
-        driver.switchTo().frame(iframe1);
-        Thread.sleep(1000);
 
         //Validate "www.uitestpractice.com refused to connect." is displayed
 
+        Thread.sleep(1000);
+        driver.switchTo().frame(iframe1);
         WebElement move = driver.findElement(By.xpath("//div[@id='sub-frame-error']"));
         actions.moveToElement(move).perform();
 
@@ -259,13 +261,13 @@ public class hm3 {
 
         //Validate Title contains "C# Beginner to advanced" text
 
+        Thread.sleep(1000);
         BrowserUtils.switchByTitle(driver, "C# Beginner to advanced");
         Assert.assertTrue(driver.getTitle().trim().contains("C# Beginner to advanced"));
 
         //Validate the link has youtube text in new window
 
         Assert.assertTrue(driver.getCurrentUrl().contains("youtube"));
-
         Thread.sleep(1000);
         driver.quit();
 
