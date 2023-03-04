@@ -46,12 +46,14 @@ public class hm3 {
 //        }
 
         //
-        driver.switchTo().frame("aswift_2");
-        driver.switchTo().frame("ad_iframe");
-        WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
-        close.click();
-        driver.switchTo().parentFrame();
-        //Enter any firstname, lastname and enrollment date
+
+//        driver.switchTo().frame("aswift_2");
+//        driver.switchTo().frame("ad_iframe");
+//        WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
+//        close.click();
+//        driver.switchTo().parentFrame();
+
+//        Enter any firstname, lastname and enrollment date
 
         WebElement firstName = driver.findElement(By.cssSelector("#FirstName"));
         firstName.sendKeys("artur");
@@ -184,7 +186,6 @@ public class hm3 {
         driver.quit();
     }
 
-
     @Test
     public void testcase5() throws InterruptedException {
         System.out.println("-------------TEST CASE 5 --------------");
@@ -203,9 +204,9 @@ public class hm3 {
 
         //Validate Alert has "Double Clicked !!" text
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         Assert.assertEquals(driver.switchTo().alert().getText().trim(), "Double Clicked !!");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         //Click Okay button to close the alert
 
