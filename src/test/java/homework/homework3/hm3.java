@@ -35,18 +35,22 @@ public class hm3 {
         Thread.sleep(1000);
 
         //
-        try {
-            driver.switchTo().frame("aswift_2");
-            driver.switchTo().frame("ad_iframe");
-            WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
-            close.click();
-            driver.switchTo().parentFrame();
-        } catch (Exception p) {
-            p.getMessage();
-        }
+//        try {
+//            driver.switchTo().frame("aswift_2");
+//            driver.switchTo().frame("ad_iframe");
+//            WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
+//            close.click();
+//            driver.switchTo().parentFrame();
+//        } catch (Exception p) {
+//            p.getMessage();
+//        }
 
         //
-
+        driver.switchTo().frame("aswift_2");
+        driver.switchTo().frame("ad_iframe");
+        WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
+        close.click();
+        driver.switchTo().parentFrame();
         //Enter any firstname, lastname and enrollment date
 
         WebElement firstName = driver.findElement(By.cssSelector("#FirstName"));
