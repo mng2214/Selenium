@@ -26,16 +26,25 @@ public class hm3 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.navigate().to("http://uitestpractice.com/Students/Index");
         Thread.sleep(1000);
+        Actions actions = new Actions(driver);
+
+
         //Click "Create New" button
 
         driver.findElement(By.xpath("//a[contains(text(),'Create New')]")).click();
         Thread.sleep(1000);
 
         //
-        driver.switchTo().frame("aswift_2");
-        driver.switchTo().frame("ad_iframe");
-        driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
-        driver.switchTo().parentFrame();
+        try {
+            driver.switchTo().frame("aswift_2");
+            driver.switchTo().frame("ad_iframe");
+            WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
+            close.click();
+            driver.switchTo().parentFrame();
+        } catch (Exception p) {
+            p.getMessage();
+        }
+
         //
 
         //Enter any firstname, lastname and enrollment date
