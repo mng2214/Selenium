@@ -1,6 +1,5 @@
 package homework.homework3;
 
-import com.beust.ah.A;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,7 +13,6 @@ import utils.BrowserUtils;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.SortedSet;
 
 public class hm3 {
     @Test
@@ -29,7 +27,6 @@ public class hm3 {
         driver.navigate().to("http://uitestpractice.com/Students/Index");
         Thread.sleep(1000);
         //Click "Create New" button
-
 
         driver.findElement(By.xpath("//a[contains(text(),'Create New')]")).click();
         Thread.sleep(1000);
@@ -57,38 +54,23 @@ public class hm3 {
 
         //Validate the new information is created
 
-        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> i did it through the loop  is it a good solution in this case?
-
         List<WebElement> firstNameValidation = driver.findElements(By.xpath("//tr//td[1]"));
         List<WebElement> lastNameValidation = driver.findElements(By.xpath("//tr//td[2]"));
         String expectedFirstName = "artur", expectedLastName = "mng";
         for (int i = 0; i < firstNameValidation.size(); i++) {
             Assert.assertEquals(BrowserUtils.getText(firstNameValidation.get(i)), expectedFirstName);
             Assert.assertEquals(BrowserUtils.getText(lastNameValidation.get(i)), expectedLastName);
-            System.out.println(BrowserUtils.getText(firstNameValidation.get(i)) + " " + BrowserUtils.getText(lastNameValidation.get(i)));
             break;
         }
-        Thread.sleep(1500);
-        driver.quit();
-    }
 
-
-    @Test
-    public void testcase22() throws InterruptedException {
+//----------------------------------------------------------------------------------------------------------------------------------------
         System.out.println("-------------TEST CASE 2.2 --------------");
-        //Navigate to the "http://uitestpractice.com/Students/Index"
-
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.navigate().to("http://uitestpractice.com/Students/Index");
-
 
         //Search your Lastname in search bar
 
-        WebElement search = driver.findElement(By.cssSelector("#Search_Data"));
-        search.sendKeys("mng");
+        WebElement searchData = driver.findElement(By.cssSelector("#Search_Data"));
+        searchData.clear();
+        searchData.sendKeys("mng");
         driver.findElement(By.xpath("//input[@value='Find']")).sendKeys(Keys.ENTER);
 
         //Click Edit button
@@ -97,7 +79,7 @@ public class hm3 {
 
         //Change first name
 
-        WebElement firstName = driver.findElement(By.cssSelector("#FirstName"));
+        firstName = driver.findElement(By.cssSelector("#FirstName"));
         firstName.clear();
         firstName.sendKeys("ARTUR222");
 
@@ -108,33 +90,25 @@ public class hm3 {
         //Search with new firstname
 
         BrowserUtils.switchByTitle(driver, "Testing Controls - UI Automation Demo Site");
-        search = driver.findElement(By.cssSelector("#Search_Data"));
-        search.sendKeys("ARTUR222");
+        searchData = driver.findElement(By.cssSelector("#Search_Data"));
+        searchData.sendKeys("ARTUR222");
         driver.findElement(By.xpath("//input[@value='Find']")).sendKeys(Keys.ENTER);
 
         //Validate Firstname is changed
 
         WebElement fistNameValid = driver.findElement(By.xpath("//tr[2]//td[1]"));
-        String expectedFirstName = "ARTUR222";
+        expectedFirstName = "ARTUR222";
         Assert.assertEquals(BrowserUtils.getText(fistNameValid), expectedFirstName);
         Thread.sleep(1500);
-        driver.quit();
-    }
 
-    @Test
-    public void testcase3() throws InterruptedException {
+
+
+        //---------------------------------------------------------------------------------------------------------------------------
         System.out.println("-------------TEST CASE 3 --------------");
-        //Navigate to the "http://uitestpractice.com/Students/Index"
-
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.navigate().to("http://uitestpractice.com/Students/Index");
-
         //Search any Lastname in search bar
 
-        WebElement search = driver.findElement(By.cssSelector("#Search_Data"));
+        search = driver.findElement(By.cssSelector("#Search_Data"));
+        search.clear();
         search.sendKeys("mng");
         driver.findElement(By.xpath("//input[@value='Find']")).sendKeys(Keys.ENTER);
 
@@ -161,9 +135,7 @@ public class hm3 {
         Thread.sleep(1500);
         driver.quit();
 
-
     }
-
 
     @Test
     public void testcase4() throws InterruptedException {

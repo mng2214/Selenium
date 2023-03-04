@@ -22,14 +22,19 @@ public class alenaTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.navigate().to("http://uitestpractice.com/Students/Index");
-        WebElement clickNewButton= driver.findElement(By.linkText("Create New"));
-        clickNewButton.click();
+        driver.findElement(By.linkText("Create New")).click();
+
         Thread.sleep(1000);
-        driver.switchTo().frame("aswift_2");
-        driver.switchTo().frame("ad_iframe");
-        WebElement closeAdd= driver.findElement(By.xpath("//div[@id='dismiss-button']"));
-        closeAdd.click();
-        driver.switchTo().parentFrame();
+        try {
+            driver.switchTo().frame("aswift_2");
+            driver.switchTo().frame("ad_iframe");
+            WebElement closeAdd = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
+            closeAdd.click();
+            driver.switchTo().parentFrame();
+        }catch (Exception p){
+            System.out.println(p.getCause());
+        }
+        BrowserUtils.switchByTitle(driver,"Testing Controls - UI Automation Demo Site");
         Thread.sleep(1000);
         WebElement firstName= driver.findElement(By.cssSelector("#FirstName"));
         firstName.sendKeys("Alice");
