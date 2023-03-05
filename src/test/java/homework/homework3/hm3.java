@@ -15,7 +15,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class hm3 {
-    @Test
+    @Test(priority = 1)
     public void testcase2and2and3() throws InterruptedException {
         System.out.println("-------------TEST CASE 2.1 --------------");
         //Navigate to the "http://uitestpractice.com/Students/Index"
@@ -156,6 +156,7 @@ public class hm3 {
         driver.quit();
 
     }
+
 
     @Test
     public void testcase4() throws InterruptedException {

@@ -27,23 +27,23 @@ public class Practice {
         Alert alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText().trim(), "I am an alert box!");
         alert.accept();
-        Thread.sleep(2000);
+        Thread.sleep(350);
         WebElement message = driver.findElement(By.cssSelector("#output"));
         Assert.assertEquals(BrowserUtils.getText(message), "You selected alert popup");
         //Box 2
         driver.findElement(By.cssSelector("#confirmBox")).click();
         Assert.assertEquals(alert.getText(),"Press a button!");
         alert.dismiss();
-        Thread.sleep(2000);
+        Thread.sleep(350);
         //Box 3
         driver.findElement(By.cssSelector("#promptBox")).click();
         alert.sendKeys("artur");
         alert.accept();
-        Thread.sleep(2000);
+        Thread.sleep(350);
         Assert.assertEquals(BrowserUtils.getText(message), "You entered text artur in propmt popup");
-
         driver.quit();
 
-
     }
+
+
 }
