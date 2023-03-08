@@ -32,9 +32,10 @@ public class hm3 {
         //Click "Create New" button
 
         driver.findElement(By.xpath("//a[contains(text(),'Create New')]")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+        driver.navigate().refresh();
 
-        //
+
 //        try {
 //            driver.switchTo().frame("aswift_2");
 //            driver.switchTo().frame("ad_iframe");
@@ -45,15 +46,6 @@ public class hm3 {
 //            p.getMessage();
 //        }
 
-        //
-
-//        driver.switchTo().frame("aswift_2");
-//        driver.switchTo().frame("ad_iframe");
-//        WebElement close = driver.findElement(By.xpath("//div[@id='dismiss-button']"));
-//        close.click();
-//        driver.switchTo().parentFrame();
-
-//        Enter any firstname, lastname and enrollment date
 
         WebElement firstName = driver.findElement(By.cssSelector("#FirstName"));
         firstName.sendKeys("artur");
@@ -121,7 +113,6 @@ public class hm3 {
         expectedFirstName = "ARTUR222";
         Assert.assertEquals(BrowserUtils.getText(fistNameValid), expectedFirstName);
         Thread.sleep(1500);
-
 
         //---------------------------------------------------------------------------------------------------------------------------
         System.out.println("-------------TEST CASE 3 --------------");
