@@ -34,6 +34,6 @@ public class TestBaseBlaze {
             Thread.sleep(3000);
             BrowserUtils.getScreenShot(driver,"blazepicture");
         }
-        driver.quit();
+       driver.quit();
     }
 }
