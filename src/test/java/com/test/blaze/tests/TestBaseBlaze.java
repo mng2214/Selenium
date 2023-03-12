@@ -4,8 +4,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITest;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.BrowserUtils;
 import utils.DriverHelper;
 
 import java.time.Duration;
@@ -26,7 +29,11 @@ public class TestBaseBlaze {
     }
 
     @AfterMethod
-    public void tearsDown() {
-        //driver.quit();
+    public void tearsDown(ITestResult iTestResult) throws InterruptedException {
+        if (!iTestResult.isSuccess()){
+            Thread.sleep(3000);
+            BrowserUtils.getScreenShot(driver,"blazepicture");
+        }
+        driver.quit();
     }
 }

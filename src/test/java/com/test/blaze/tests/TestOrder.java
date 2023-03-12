@@ -22,7 +22,7 @@ public class TestOrder extends TestBaseBlaze{
         cartPage.cartTextValidation("MacBook Pro", "1100");
 
         OrderPage orderPage = new OrderPage(driver);
-        orderPage.placeOrderFunc(driver, "artur", "usa", "chicago", "1234 1234 1234 1234 1234", "11", "2023");
+        orderPage.placeOrderFunc(driver, "artur", "usa", "chicago", "1234 1234 545 58 4848 4848", "11", "2023");
 
     }
 }
