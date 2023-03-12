@@ -40,4 +40,6 @@ public class LoginTest {
         Assert.assertEquals(loginPage.colorOfErrorMessage(),"rgba(255, 0, 0, 1)");
         driver.quit();
     }
+
+
 }
