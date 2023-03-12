@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Suit">
+
+    <test name="Blaze Test">
+
+        <classes>
+
+            <class name="com.test.blaze.tests.TestMacBookPro"></class>
+            <class name="com.test.blaze.tests.TestOrder"></class>
+
+        </classes>
+
+    </test>
+
+    <test name="Bank Tests">
+
+        <classes>
+
+            <class name="com.test.bank.tests.ManagerTest"></class>
+
+        </classes>
+
+    </test>
+
+</suite>

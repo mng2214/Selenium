@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -18,7 +19,8 @@ public class ManagerTest {
 
     @BeforeMethod
     public void beforeMethod() {
-
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
@@ -31,6 +33,8 @@ public class ManagerTest {
 
     @Test
     public void managerFunc() throws InterruptedException {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickBankManagerLogin();
         BankManagerPage bankManagerPage = new BankManagerPage(driver);

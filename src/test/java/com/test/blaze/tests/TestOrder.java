@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 public class TestOrder extends TestBaseBlaze{
     @Test
     public void orderFunc() throws InterruptedException {
+
         MainPage mainPage = new MainPage(driver);
         mainPage.setLaptopsButtonClick();
 
