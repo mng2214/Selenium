@@ -42,7 +42,7 @@ public class OrderPage {
         purchase.click();
 
         Assert.assertTrue(thankYouMsg.getText().contains("Thank you for your purchase!"));
-        Thread.sleep(500);
+        Thread.sleep(1000);
         okButton.click();
 
         Assert.assertEquals(driver.getTitle(), "STORE");

@@ -23,5 +23,6 @@ public class TestOrder extends TestBaseBlaze{
 
         OrderPage orderPage = new OrderPage(driver);
         orderPage.placeOrderFunc(driver, "artur", "usa", "chicago", "1234 1234 1234 1234 1234", "11", "2023");
+
     }
 }

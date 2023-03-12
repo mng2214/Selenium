@@ -22,7 +22,7 @@ public class ManagerTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+        driver=new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
@@ -30,11 +30,8 @@ public class ManagerTest {
     }
 
 
-
     @Test
     public void managerFunc() throws InterruptedException {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickBankManagerLogin();
         BankManagerPage bankManagerPage = new BankManagerPage(driver);

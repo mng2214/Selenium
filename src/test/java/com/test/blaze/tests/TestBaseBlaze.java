@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.DriverHelper;
 
 import java.time.Duration;
 
@@ -14,17 +15,18 @@ public class TestBaseBlaze {
 
     @BeforeMethod
     public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        WebDriverManager.chromedriver().setup();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        driver = new ChromeDriver(options);
+//        WebDriverManager.chromedriver().setup();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver = DriverHelper.getDriver();
         driver.get("https://www.demoblaze.com/#");
     }
 
     @AfterMethod
     public void tearsDown() {
-        driver.quit();
+        //driver.quit();
     }
 }

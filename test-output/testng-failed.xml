@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Regression Suit]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Blaze Test(failed)">
+    <classes>
+      <class name="com.test.blaze.tests.TestOrder">
+        <methods>
+          <include name="setup"/>
+          <include name="tearsDown"/>
+          <include name="orderFunc"/>
+        </methods>
+      </class> <!-- com.test.blaze.tests.TestOrder -->
+    </classes>
+  </test> <!-- Blaze Test(failed) -->
+</suite> <!-- Failed suite [Regression Suit] -->
